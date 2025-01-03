@@ -1,6 +1,7 @@
 import React, {useContext, useEffect, useState} from "react";
 import {CartContext} from "../context/CartContext";
 import {Quantifier} from "./Quantifier";
+import {Link} from "react-router-dom";
 
 const Cart = () => {
     const { cartItems } = useContext(CartContext);
@@ -51,6 +52,10 @@ const Cart = () => {
                             }, 0)
                         }€
                     </strong>
+                </li>
+
+                <li className="list-group-item d-flex justify-content-between">
+                    <Link to={"/checkout"} className="btn btn-lg btn-warning">Checkout</Link>
                 </li>
             </ul>
         </>
