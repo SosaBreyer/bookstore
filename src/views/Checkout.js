@@ -1,18 +1,13 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import Cart from "../components/Cart";
 import {CartContext} from "../context/CartContext";
-import {isValidDateValue} from "@testing-library/user-event/dist/utils";
 
 function Checkout() {
+    const { cartItems, setCartItems } = useContext(CartContext);
+    const [show, setShow] = useState('');
 
-    const [validated, setIsValidated] = useState(false)
-
-    useEffect(() => {
-        if (validated) {
-            const modal = document.getElementById('confirmationModal');
-            modal?.showModal();
-        }
-    }, [validated])
+    const handleClose = () => setShow('');
+    const handleShow = () => setShow('show');
 
     // Fetch all the forms we want to apply custom Bootstrap validation styles to
     const forms = document.querySelectorAll('.needs-validation')
@@ -20,21 +15,17 @@ function Checkout() {
     // Loop over them and prevent submission
     Array.from(forms).forEach(form => {
         form?.addEventListener('submit', event => {
-            if (!form.checkValidity()) {
-                event.preventDefault()
-                event.stopPropagation()
+            event.preventDefault();
+            event.stopPropagation();
 
-            } else {
-                const submitBtn = document.getElementById('submit');
-                submitBtn?.setAttribute('data-bs-toggle', 'modal')
-                submitBtn?.setAttribute('data-bs-target', "#confirmationModal")
+            if (form.checkValidity()) {
+                handleShow();
+                setCartItems([]);
             }
-            setIsValidated(form.checkValidity())
+
             form.classList.add('was-validated')
         }, false)
     });
-
-    console.log(validated)
 
     return (
         <main>
@@ -194,28 +185,30 @@ function Checkout() {
                 </div>
             </div>
 
-            <div className="modal fade" tabIndex="-1"
-                 role="dialog" id="modalSheet">
-                        <div className="modal-dialog">
-                            <div className="modal-content">
-                                <div className="modal-header">
-                                    <h1 className="modal-title fs-5" id="modalLabel">Modal title</h1>
-                                    <button type="button" className="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                </div>
-                                <div className="modal-body">
-                                    Woo-hoo, you're reading this text in a modal!
-                                </div>
-                                <div className="modal-footer">
-                                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close
-                                    </button>
-                                    <button type="button" className="btn btn-primary">Save changes</button>
-                                </div>
+            <div id="confirmationModal" className={`modal fade ${show}`} tabIndex="-1" role="dialog">
+        <div className="modal-dialog" role="document">
+            <div className="modal-content rounded-4 shadow">
+                <div className="modal-body p-5">
+                    <h2 className="fw-bold mb-0">Tiny Book Store</h2>
+
+                    <ul className="d-grid gap-4 my-5 list-unstyled small">
+                        <li className="d-flex gap-4">
+                            <i className="bi bi-bag-heart-fill"></i>
+                            <div>
+                                <h5 className="mb-0">Thank you!</h5>
+                                We’ve received your order. We’ll send you an email when it ships.
                             </div>
-                        </div>
-                    </div>
+                        </li>
+                    </ul>
+                    <button type="button" className="btn btn-lg btn-primary mt-5 w-100"
+                            onClick={handleClose}>Great, thanks!
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
         </main>
-);
+    );
 }
 
 export default Checkout;
