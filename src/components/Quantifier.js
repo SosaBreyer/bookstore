@@ -43,7 +43,7 @@ export const Quantifier = ({id, amount}) => {
             <button type="button" className={`btn ${leftButtonClass}`} onClick={() => reduce(id,amount)}>
                 <i className={`bi ${leftButtonIcon}`}></i>
             </button>
-            <input type="text" value={amount} className="cart-input" disabled/>
+            <input name="amount" type="text" value={amount} className="cart-input" disabled/>
             <button type="button" className="btn btn-secondary" onClick={() => increase(id, amount)}>
                 <i className="bi bi-plus-lg"></i>
             </button>
