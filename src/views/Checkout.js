@@ -4,25 +4,35 @@ import Cart from "../components/Cart";
 import {Link} from "react-router-dom";
 
 function Checkout() {
-    const { cartItems, setCartItems } = useContext(CartContext);
+    const { setCartItems } = useContext(CartContext);
     const [show, setShow] = useState('');
-    const handleClose = () => setShow('');
     const handleShow = () => setShow('show');
-    const forms = document.querySelectorAll('.needs-validation');
 
-    Array.from(forms).forEach(form => {
-        form?.addEventListener('submit', event => {
+    useEffect(() => {
+        const forms = document.querySelectorAll('.needs-validation');
+
+        const handleSubmit = (event) => {
             event.preventDefault();
             event.stopPropagation();
 
-            if (form.checkValidity()) {
+            if (event.target.checkValidity()) {
                 handleShow();
                 setCartItems([]);
             }
 
-            form.classList.add('was-validated')
-        }, false)
-    });
+            event.target.classList.add('was-validated');
+        };
+
+        forms.forEach(form => {
+            form.addEventListener('submit', handleSubmit, false);
+        });
+
+        return () => {
+            forms.forEach(form => {
+                form.removeEventListener('submit', handleSubmit, false);
+            });
+        };
+    }, [setCartItems]);
 
     return (
         <main>
