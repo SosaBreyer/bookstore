@@ -56,7 +56,7 @@ function Overview() {
                 <div className="col-md-7 col-lg-8">
                     <div className="album py-5 bg-body-tertiary">
                         <div className="container">
-                            <div className="row row-cols-1 row-cols-md-3 mb-3 g-3">
+                            <div className="row row-cols-1 row-cols-lg-2 row-cols-xl-3 mb-3 g-3">
                                 {
                                     filteredBooks.length > 0 ? (
                                         filteredBooks.map((book, index) => (
