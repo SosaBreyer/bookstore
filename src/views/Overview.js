@@ -25,18 +25,24 @@ function Overview() {
     }, [books]);
 
     return (
-        <main className="container">
+        <main className="container p-3">
             <div className="row">
                 <div className="col">
                     <section className="py-5 text-center container">
                         <div className="row py-lg-5">
                             <div className="col-lg-6 col-md-8 mx-auto">
-                                <input type="search"
-                                       name="search"
-                                       value={searchItem}
-                                       onChange={handleInputChange}
-                                       placeholder="Buscar por título"
-                                />
+                                <div className="input-group">
+                                    <span className="input-group-text" id="search-icon">
+                                        <i className="bi bi-search"></i>
+                                    </span>
+                                    <div className="form-floating">
+                                        <input type="search" id="book-search" 
+                                            className="form-control" placeholder="Search by title" 
+                                            value={searchItem} onChange={handleInputChange}
+                                        />
+                                        <label htmlFor="book-search">Search by title</label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </section>

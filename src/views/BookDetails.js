@@ -28,7 +28,7 @@ const BookDetails = () => {
     }
 
     return (
-        <main className="container">
+        <main className="container py-3">
             <div className="row">
                 <div className="col-md-5 col-lg-4 order-md-last">
                     <Cart></Cart>

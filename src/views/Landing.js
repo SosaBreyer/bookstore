@@ -3,15 +3,16 @@ import {Link} from "react-router-dom";
 import useRedirection from "../hooks/useRedirection";
 
 function Landing() {
-    useRedirection("/books", 5000);
+    //useRedirection("/books", 5000);
 
     return (
-        <main className="container">
-            <h1>Cover your page.</h1>
-            <p className="lead">Cover is a one-page template for building simple and beautiful home pages. Download,
-                edit the text, and add your own fullscreen background photo to make it your own.</p>
-            <p className="lead">
-                <Link to={"/books"} className="btn btn-lg btn-light fw-bold border-white bg-white">Learn more</Link>
+        <main className="landing-container p-3 text-center">
+            <h1>Welcome to Tiny Book Store</h1>
+            <p>Tiny Book Store is your favorite virtual bookstore. Find a wide variety of books for all tastes and ages. Explore our catalog and discover your next read!</p>
+            <p>
+                <Link to={"/books"} className="btn btn-lg btn-warning fw-bold border-black">
+                    Explore Books
+                </Link>
             </p>
         </main>
     );
