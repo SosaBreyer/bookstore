@@ -11,7 +11,7 @@ const BookDetails = () => {
     const bookDetail = books.find(book => book.id === bookId);
 
     if (!bookDetail) {
-        return <main><h2>Libro no encontrado</h2></main>;
+        return <main className="container"><h2>Libro no encontrado</h2></main>;
     }
 
     const addToCart = (book) => {
@@ -28,7 +28,7 @@ const BookDetails = () => {
     }
 
     return (
-        <main>
+        <main className="container">
             <div className="row">
                 <div className="col-md-5 col-lg-4 order-md-last">
                     <Cart></Cart>

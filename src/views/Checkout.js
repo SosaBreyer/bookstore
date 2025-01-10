@@ -35,7 +35,7 @@ function Checkout() {
     }, [setCartItems]);
 
     return (
-        <main>
+        <main className="container">
             <div className="py-5 text-center">
                 <h2>Checkout</h2>
             </div>

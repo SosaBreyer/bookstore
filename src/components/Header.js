@@ -3,13 +3,12 @@ import {Link} from "react-router-dom";
 
 function Header () {
     return (
-        <header className="mb-auto">
-            <div>
-                <h3 className="float-md-start mb-0">Book Store</h3>
-                <nav className="nav nav-masthead justify-content-center float-md-end">
-                    <Link to={"/books"} className="nav-link fw-bold py-1 px-0">Home</Link>
-                </nav>
-            </div>
+        <header>
+            <nav className="navbar navbar-expand navbar-dark bg-dark">
+                <div className="container">
+                    <Link to={"/books"} className="navbar-brand">Book Store</Link>
+                </div>
+            </nav>
         </header>
     );
 }

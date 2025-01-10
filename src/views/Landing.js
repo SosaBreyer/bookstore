@@ -6,7 +6,7 @@ function Landing() {
     useRedirection("/books", 5000);
 
     return (
-        <main className="px-3">
+        <main className="container">
             <h1>Cover your page.</h1>
             <p className="lead">Cover is a one-page template for building simple and beautiful home pages. Download,
                 edit the text, and add your own fullscreen background photo to make it your own.</p>

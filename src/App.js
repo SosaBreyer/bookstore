@@ -13,7 +13,7 @@ function App() {
     return (
         <BookContext.Provider value={{books}}>
             <CartContext.Provider value={{cartItems, setCartItems}}>
-                <div className="App container d-flex w-100 h-100 p-3 mx-auto flex-column">
+                <div className="App d-flex w-100 h-100 mx-auto flex-column">
                     <Router></Router>
                     <Footer/>
                 </div>
