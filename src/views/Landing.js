@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import useRedirection from "../hooks/useRedirection";
 
 function Landing() {
-    //useRedirection("/books", 5000);
+    useRedirection("/books", 5000);
 
     return (
         <main className="landing-container p-3 my-auto text-center">
